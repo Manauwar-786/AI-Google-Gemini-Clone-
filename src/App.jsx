@@ -50,15 +50,15 @@ function App() {
             </ul>
           </div>
         </div>
-        <div className="text-white bg-zinc-800 m-auto w-1/2 p-4 border-zinc-600 border-2 rounded-4xl flex ">
+        <div className="text-white bg-zinc-800 m-auto md:w-1/2  p-3 md:p-4 border-zinc-600 border-2 rounded-4xl flex gap-4">
           <input
             onChange={(e) => setQuestion(e.target.value)}
-            className="w-full h-full outline-none text-lg"
+            className="w-full h-full outline-none text-sm md:text-lg"
             type="text"
             value={question}
             placeholder="Ask Anything"
           ></input>
-          <button className="text-sm" onClick={askQuestion}>Ask</button>
+          <button className="text-sm md:text-lg" onClick={askQuestion}>Ask</button>
         </div>
       </div>
     </div>
