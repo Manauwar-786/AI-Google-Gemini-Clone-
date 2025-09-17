@@ -14,9 +14,9 @@ function Answer({ ans,totalResult, index }) {
   return (
     <div className="text-white">
       {index==0 && totalResult>1 ? 
-        <span className="text-xl ">{answer}</span>
+        <span className="md:text-2xl text-lg ">{answer}</span>
        : heading ? (
-        <span className="pt-2 text-sm block">{answer}</span>
+        <span className="pt-2 text-sm md:text-lg block">{answer}</span>
       ) : (
         <span className="pl-5">{answer}</span>
       )}
