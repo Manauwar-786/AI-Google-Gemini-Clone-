@@ -14,7 +14,7 @@ function Answer({ ans,totalResult, index }) {
   return (
     <div className="text-white">
       {index==0 && totalResult>1 ? 
-        <span className="md:text-2xl text-lg ">{answer}</span>
+        <span className="md:text-xl text-lg font-semibold">{answer}</span>
        : heading ? (
         <span className="pt-2 text-sm md:text-lg block">{answer}</span>
       ) : (
