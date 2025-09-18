@@ -4,7 +4,7 @@ import Answer from "./components/Answer";
 
 function App() {
   const [question, setQuestion] = useState("");
-  const [result, setResult] = useState(undefined);
+  const [result, setResult] = useState([]);
   // const aksBtnHandler = () => {
   //   console.log(question)
   //}
@@ -30,24 +30,37 @@ function App() {
     let stringData = response.candidates[0].content.parts[0].text;
     stringData = stringData.split("* ");
     stringData = stringData.map((item) => item.trim());
-    console.log(stringData);
-    setResult(stringData);
+    // console.log(stringData);
+    setResult([...result,{type:"q",text:question},{type:"a",text:stringData}]);
   };
   return (
     <div className="grid grid-cols-5 h-screen ">
       <div className="col-span-1 bg-zinc-800"></div>
       <div className="col-span-4">
         <div className="container h-100 overflow-scroll">
-          <div className="text-white py-15">
-            <ul>
-              {/* {result} */}
-              {result &&
-                result.map((item,index) => (
-                  <li key={index+Math.random()} className="px-5 ">
-                    <Answer ans={item} totalResult={result.length} index={index} />
-                  </li>
-                ))}
-            </ul>
+          <div className="text-white md:py-10 py-7 md:pr-5 pr-2" >
+           
+              <ul>
+                {
+                  result.map((item,index) => (
+
+                <div key={index+Math.random()} className={item.type=='q'? 'flex justify-end':''}>
+                  {
+                    
+                      item.type=='q'? 
+                   <li key={index+Math.random()} className=" md:px-5 px-2 md:text-lg text-right border-8 bg-zinc-700 border-zinc-700 rounded-tl-3xl rounded-bl-3xl rounded-br-3xl w-fit">
+                    <Answer ans={item.text} totalResult={1} index={index} type={item.type} /></li>
+                  : item.text.map((ansItem,ansIndex) => (
+                     <li key={ansIndex+Math.random()} className="md:px-5 px-2 md:text-lg ">
+                    <Answer ans={ansItem} totalResult={item.length} index={ansIndex} type={item.type} />
+                 </li>
+                   ))
+                  }
+                </div>
+                 
+                  ))
+                }
+              </ul>
           </div>
         </div>
         <div className="text-white bg-zinc-800 m-auto md:w-1/2  p-3 md:p-4 border-zinc-600 border-2 rounded-4xl flex gap-4">
